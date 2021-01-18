@@ -5,7 +5,8 @@
   "scripts": {
     "dev:start": "webpack serve --mode development",
     "prod:start": "webpack serve --mode production",
-    "prod:build": "webpack --mode production"
+    "prod:build": "webpack --mode production",
+    "prod:deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "node-fetch": "^2.6.1"
@@ -13,6 +14,7 @@
   "devDependencies": {
     "@types/node-fetch": "^2.5.8",
     "css-loader": "^5.0.1",
+    "gh-pages": "^3.1.0",
     "html-webpack-plugin": "^5.0.0-beta.5",
     "style-loader": "^2.0.0",
     "ts-loader": "^8.0.14",
