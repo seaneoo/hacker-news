@@ -1,5 +1,5 @@
 const path = require("path");
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+// const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const HtmlPlugin = require("html-webpack-plugin");
 const dist = path.resolve(__dirname, "dist");
 
@@ -18,7 +18,7 @@ module.exports = {
     port: 3000,
   },
 
-  optimization: { minimizer: [new UglifyJsPlugin()] },
+  // optimization: { minimizer: [new UglifyJsPlugin()] },
 
   module: {
     rules: [
