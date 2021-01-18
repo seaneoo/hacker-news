@@ -1,14 +1,8 @@
 import "./style.css";
-
 import { get } from "./api";
-const topstories = document.getElementById("topstories");
+import { formatUnixTime, getDomainFromUrl, getTimeSinceUnix } from "./util";
 
-const getDomainFromUrl = (url: string) => {
-  const exp = new RegExp(
-    /^[a-z][a-z0-9+\-.]*:\/\/([a-z0-9\-._~%!$&'()*+,;=]+@)?([a-z0-9\-._~%]+|↵\[[a-z0-9\-._~%!$&'()*+,;=:]+\])/g
-  );
-  return url.match(exp);
-};
+const topstories = document.getElementById("topstories");
 
 const addItem = (post: number) => {
   get(`https://hacker-news.firebaseio.com/v0/item/${post}.json`).then(
@@ -31,9 +25,9 @@ const addItem = (post: number) => {
 
       const a = document.createElement("a");
       a.href = res.url;
-      a.innerHTML = `${
-        res.title
-      } <span style="font-size: 65%">(${getDomainFromUrl(res.url)})</span>`;
+      a.innerHTML = `${res.title} <span class="post_domain">(${getDomainFromUrl(
+        res.url
+      )})</span>`;
       post_title.append(a);
 
       post.append(post_title);
@@ -51,8 +45,14 @@ const addItem = (post: number) => {
       const post_author = document.createElement("span");
       post_author.classList.add("post_author");
       post_author.setAttribute("title", `by ${res.by}`);
-      post_author.innerText = `by ${res.by}`;
+      post_author.innerHTML = `by ${res.by}`;
       post_info.append(post_author);
+
+      const post_time = document.createElement("span");
+      post_time.classList.add("post_time");
+      post_time.setAttribute("title", `${formatUnixTime(res.time)}`);
+      post_time.innerText = `${getTimeSinceUnix(res.time)}`;
+      post_info.append(post_time);
 
       if (res.descendants > 0) {
         const post_comments = document.createElement("span");
