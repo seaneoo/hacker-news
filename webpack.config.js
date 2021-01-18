@@ -45,5 +45,9 @@ module.exports = {
     new HtmlPlugin({
       template: "./public/index.html",
     }),
+    new webpack.ContextReplacementPlugin(
+      /date\-fns[\/\\]/,
+      new RegExp(`[/\\\\\](${["en-US"].join("|")})[/\\\\\]index\.js$`)
+    ),
   ],
 };
