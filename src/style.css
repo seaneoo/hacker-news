@@ -3,7 +3,6 @@
   --secondary: #ddddd7;
   --tertiary: #999999;
   --accent: #eb5e00;
-  --background: #f6f6ef;
   --black: #000000;
 }
 
@@ -45,12 +44,41 @@ ul {
   list-style: none;
 }
 
-div#root {
-  min-height: 100vh;
-  background-color: var(--background);
+header {
+  min-height: 5vh;
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
 }
 
-div#root span {
+header span.brand {
+  display: grid;
+  place-items: center;
+  font-weight: bold;
+}
+
+header ul.links {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+header ul.links li.item {
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+header ul.links li.item.active {
+  border-bottom: 2px solid var(--accent);
+}
+
+main {
+  min-height: 100vh;
+}
+
+main span {
   font-size: 125%;
 }
 
