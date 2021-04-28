@@ -2,8 +2,8 @@ import {
   differenceInHours,
   differenceInMinutes,
   format,
-  fromUnixTime,
-} from "date-fns";
+  fromUnixTime
+} from 'date-fns';
 
 export const getDomainFromUrl = (url: string) => {
   const exp = new RegExp(
@@ -19,13 +19,13 @@ export const getTimeSinceUnix = (time: number) => {
   if (diff < 1) {
     return `${differenceInMinutes(now, date)} minutes ago`;
   } else if (diff > 24) {
-    return "a while ago";
+    return 'a while ago';
   } else {
-    return `${diff} hour${diff === 1 ? "" : "s"} ago`;
+    return `${diff} hour${diff === 1 ? '' : 's'} ago`;
   }
 };
 
 export const formatUnixTime = (time: number) => {
   const date = fromUnixTime(time);
-  return format(date, "yyyy-MMM-dd kk:mm:ss X");
+  return format(date, 'yyyy-MMM-dd kk:mm:ss X');
 };

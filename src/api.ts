@@ -1,4 +1,4 @@
-import fetch from "node-fetch";
+import fetch from 'node-fetch';
 
 const get = async (url: string): Promise<any> => {
   return await fetch(url)
